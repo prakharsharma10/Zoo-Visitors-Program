@@ -16,7 +16,7 @@ Visitors visit a Zoo on different dates.Write a program to compute the following
 
 3.On which week day most number of visitors visit the zoo?
 
-4.How many percentof the total number of visitors visited the zoo on a weekend ie on Sunday or Saturday
+4.How many percent of the total number of visitors visited the zoo on a weekend ie on Sunday or Saturday
 
 
 Each line of input contains the date of visiting the zoo,number of opening hours of the zoo and the number
