@@ -1,3 +1,30 @@
+
+//   Functions 
+//   public static void main(String args)throws IOException,ParseException
+//   entry point for the program ,returns 0 on normal termination 
+
+//   static String getMaxWeekDay(int n)
+//   returns a string for the day 
+//   for eg for n=1 it returns "Sunday"
+//   for n=7 it returns "Saturday"
+
+
+//   Class
+//   public class DataAnalysis 
+//   It is the class containig main function and is the only class in the program
+//   It uses a hashtable to keep a count of visitors on a givrn date and day
+//   It is then used to find the different stats as mentiond in the requirements
+
+//   Data Requirements
+//   formatter		 type:Dateformat       used for formatting
+//   idate		 type:Date             used for date
+//   maxweekday          type:int	       keeps the day on which maximum visitors visited
+//   days		 type:int[]            keeps the count of no of vistors for 7 days
+//   imaxday and iminday type:Date             reference for day on which maximum and minimum visitors visted the zoo
+//   few self-explanatory variables/references.....
+   
+
+
 import java.io.*;
 import java.util.Calendar;
 import java.util.Hashtable;
@@ -12,6 +39,7 @@ public class DataAnalysis
 
 	 /**
 	 * @author Prakhar Sharma
+	 * Last modified by Prakhar Sharma
 	 * @param args
 	 * @throws IOException 
 	 * @throws ParseException 
