@@ -18,6 +18,7 @@ of visitors on that day each separated by a comma(,) as shown below
 Sample 
 
 Input:
+
 13/10/13, 7, 32
 14/09/11, 4, 43
 29/02/12, 3 ,29
