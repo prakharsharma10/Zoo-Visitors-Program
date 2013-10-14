@@ -19,34 +19,33 @@ public class DataAnalysis
 	public static void main(String[] args) throws IOException, ParseException
 	{
 		
-		    DateFormat formatter = null;
+	DateFormat formatter = null;
         Date idate= null;
         Hashtable<Date,Integer> visitors= new Hashtable<Date,Integer>();
         String s;
         
-		    File f = new File("input.txt");
-		    FileReader fr = new FileReader(f);
-		    BufferedReader br  = new BufferedReader(fr);	
+	File f = new File("input.txt");
+	FileReader fr = new FileReader(f);
+	BufferedReader br  = new BufferedReader(fr);	
         
         while((s=br.readLine())!=null)
         {       	
-        
-        	String[] details = s.split("\\s");
-        	if(details[0].equals(""))break;
+           String[] details = s.split("\\s");
+       	   if(details[0].equals(""))break;
         	formatter = new SimpleDateFormat("yyyy/MM/dd");
-        	details[0] =  "20" + details[0];		
-        	// 13/10/14--->> 2013/10/14 
-        	idate=(Date)formatter.parse(details[0]);	        
+	   details[0] =  "20" + details[0];		
+       	   // 13/10/14--->> 2013/10/14 
+           idate=(Date)formatter.parse(details[0]);	        
         	
         	
-        	// Update Hashtable with no. of visitors
-        	if(visitors.containsKey(idate))				
-        		visitors.put(idate, visitors.get(idate)+Integer.parseInt(details[2]));
-        	else
-        		visitors.put(idate,Integer.parseInt(details[2]));        		
+           // Update Hashtable with no. of visitors
+           if(visitors.containsKey(idate))				
+        	visitors.put(idate, visitors.get(idate)+Integer.parseInt(details[2]));
+           else
+        	visitors.put(idate,Integer.parseInt(details[2]));        		
         	
         }
-	      br.close();
+	br.close();
         Calendar c=Calendar.getInstance();
         Set<Date> keys = visitors.keySet();
         Date imaxday=null,iminday=null;
@@ -55,18 +54,18 @@ public class DataAnalysis
         for(Date key:keys)
         {
         	
-        	if(visitors.get(key)>imaxvisitor)
+           if(visitors.get(key)>imaxvisitor)
         	{
-        		imaxvisitor=visitors.get(key);
-        		imaxday=key;
+        	  imaxvisitor=visitors.get(key);
+        	  imaxday=key;
         	}
-        	if(visitors.get(key)<iminvisitor)
+           if(visitors.get(key)<iminvisitor)
         	{
-        		iminvisitor=visitors.get(key);
-        		iminday=key;
+        	  iminvisitor=visitors.get(key);
+        	  iminday=key;
         	}
-        	c.setTime(key);
-        	days[c.get(Calendar.DAY_OF_WEEK)]+=visitors.get(key);        	
+           c.setTime(key);
+           days[c.get(Calendar.DAY_OF_WEEK)]+=visitors.get(key);        	
         	
         	
         }
@@ -79,48 +78,50 @@ public class DataAnalysis
         DateFormat df=DateFormat.getDateInstance(DateFormat.FULL);
         	
         pw.println("Date and Day on which maximum no. of visitors visited :"+df.format(imaxday));       
-    	  pw.println("Date and Day on which minimum no. of visitors visited :"+df.format(iminday));
+    	pw.println("Date and Day on which minimum no. of visitors visited :"+df.format(iminday));
     	
-    	  int maxweekday=-1,uptillmax=-1;
-    	  int weekendvisitors=0,totalvisitors=0;
-    	  for(int i=1;i<=7;i++)
-    	  {
-    		  if(days[i]>uptillmax)
-    		  {
-    			  uptillmax=days[i];
-    			  maxweekday=i;
-    		  }
+    	int maxweekday=-1,uptillmax=-1;
+    	int weekendvisitors=0,totalvisitors=0;
+    	for(int i=1;i<=7;i++)
+    	{
+    	    if(days[i]>uptillmax)
+    		{
+                    uptillmax=days[i];
+    		    maxweekday=i;
+    		}
     			
     			
-    		  if(i==1||i==7)
-      			weekendvisitors+=days[i];
+    	    if(i==1||i==7)
+      		weekendvisitors+=days[i];
     		
-    		  totalvisitors+=days[i];
+    	    totalvisitors+=days[i];
     			
-    	  }
+    	}
     	
-    	  s=getMaxWeekDay(maxweekday);
+    	s=getMaxWeekDay(maxweekday);
     	
-    	  pw.println("Day on which most no. of visitors visit on average : "+s+"day");
-    	  pw.println("Percentage of weekend visitors over total visitors : "+((double)weekendvisitors/totalvisitors)*100.00+"%");
+    	pw.println("Day on which most no. of visitors visit on average : "+s+"day");
+    	pw.println("Percentage of weekend visitors over total visitors : "+((double)weekendvisitors/totalvisitors)*100.00+"%");
 
-    	  pw.close();
+    	pw.close();
 	}
+	
+	
 	
 	static String getMaxWeekDay(int n)
 	{
-		    String s="";
-		    switch(n)
-		    {
-		      case 1:s="Sun";break;
-		      case 2:s="Mon";break;
-		      case 3:s="Tues";break;
-		      case 4:s="Wednes";break;
-		      case 5:s="Thurs";break;
-		      case 6:s="Fri";break;
-		      case 7:s="Satur";break;
-		    }
-		    return s;
+	    String s="";
+	    switch(n)
+	    {
+	      case 1:s="Sun";break;
+	      case 2:s="Mon";break;
+	      case 3:s="Tues";break;
+	      case 4:s="Wednes";break;
+	      case 5:s="Thurs";break;
+	      case 6:s="Fri";break;
+	      case 7:s="Satur";break;
+	    }
+	    return s;
 		
 		
 	}
